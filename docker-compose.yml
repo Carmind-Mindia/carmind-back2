@@ -1,0 +1,16 @@
+version: '3'
+services:
+    carmind-back2:
+      image: fonzeca/carmind-back2:dev
+      # ports:
+      #   - 5623:5623
+      networks:
+        - carmind
+      env_file:
+        - .env
+
+networks:
+  carmind:
+    driver: bridge
+    name: carmind
+    external: true
