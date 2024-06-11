@@ -2,11 +2,11 @@ import { Type, type Static } from "@sinclair/typebox"
 import mongoose, { Schema } from "mongoose"
 
 export enum VehiculoTipo {
-	"Auto",
-	"Camioneta",
-	"Camión",
-	"Montacargas",
-	"Otro",
+	"Auto" = "Auto",
+	"Camioneta" = "Camioneta",
+	"Camion" = "Camion",
+	"Montacargas" = "Montacargas",
+	"Otro" = "Otro",
 }
 
 //-------------------------------------------------------------------------
@@ -31,7 +31,11 @@ const vehiculoSchema = new Schema<IVehiculo>(
 		marca: { type: String, required: false },
 		modelo: { type: String, required: false },
 		anio: { type: Number, required: false },
-		tipo: { type: String, required: true, enum: Object.values(VehiculoTipo) },
+		tipo: { 
+			type: Schema.Types.String, 
+			required: true, 
+			enum: VehiculoTipo
+		},
 		activo: { type: Boolean, default: true },
 	},
 	{
